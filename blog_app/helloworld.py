@@ -1,10 +1,17 @@
 import webapp2
 
 form= """
-<form method="post" action="/testform">
-	<input name="q">
-	<input type="submit">
-</form>
+<head>
+	<title>Caesar Cipher</title>
+</head>
+<body>
+	<h2>Enter some text to Caesar Cipher</h2>
+	<form method="post">
+		<textarea name="text" style="height: 100px; width: 400px;"></textarea>
+		<br>
+		<input type="submit">
+	</form>
+</body>
 """
 
 class MainPage(webapp2.RequestHandler):
