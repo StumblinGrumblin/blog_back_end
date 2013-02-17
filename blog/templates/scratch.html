@@ -1,24 +1,116 @@
-<form>
-	<!--<label>
-		One
-		<input type="radio" name="q" value="one">
-	</label>
+form1 = '''
+<html>
+  <head>
+    <title>StumblinGrumblin.com</title>
+  </head>
+  <body>
+    <h1>STUMBLINGRUMBLIN.COM <br> HOMEPAGE</h1>
+    <a href="/rot13">Caesar Cipher Project</a>
+    <br>
+    <a href="/signup">Signup Page</a>
+    <br>
+    <form action="http:/ww.google.com/search">
+    <h3>Google It!</h3><input name="q">
+      <input type="submit">
+    </form>
+  </body>
+</html>
+'''
 
-	<label>
-		Two
-		<input type="radio" name="q" value="two">
-	</label>
+form2 = '''
+<html>
+  <head>
+    <title>Caesar Cipher</title>
+  </head>
+  <body>
+    <h2>Enter some text to Caesar Cipher</h2>
+    <form method="post">
+      <textarea name="text" style="height: 100px; width: 400px;">%(output)s</textarea>
+      <br>
+      <input type="submit">
+    </form>
+  </body>
+</html>
+'''
 
-	<label>
-		Three
-		<input type="radio" name="q" value="three">
-	</label> /-->
+form3 = '''
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Sign Up</title>
+    <style type="text/css">
+      .label {text-align: right}
+      .error {color: red}
+    </style>
 
-	<select name="q">
-		<option>one</option>
-		<option>two</option>
-		<option>three</option>
-	</select>
-	<br>
-	<input type="submit">
-</form>
+  </head>
+
+  <body>
+    <h2>Signup</h2>
+    <form method="post">
+      <table>
+        <tbody><tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input type="text" name="username" value="%(name)s">
+          </td>
+          <td class="error">
+            %(e_name)s
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input type="password" name="password" value="%(pw)s">
+          </td>
+          <td class="error">
+            %(e_pw)s
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Verify Password
+          </td>
+          <td>
+            <input type="password" name="verify" value="%(pw)s">
+          </td>
+          <td class="error">
+            %(e_match)s
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Email (optional)
+          </td>
+          <td>
+            <input type="text" name="email" value="%(email)s">
+          </td>
+          <td class="error">
+            %(e_email)s
+          </td>
+        </tr>
+      </tbody></table>
+
+      <input type="submit">
+    </form>
+
+</body></html>
+'''
+
+welcome_form="""
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <h2>Welcome, %s!</h2>
+  </body>
+</html>
+"""
