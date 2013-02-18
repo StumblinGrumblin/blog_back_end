@@ -1,68 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <title>Signup Page</title>
+    <link href="/static/master.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+
+
+
+  <!--<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sign Up</title>
     <style type="text/css">
       .label {text-align: right}
       .error {color: red}
     </style>
 
-  </head>
+  </head> -->
 
   <body>
-    <h2>Signup</h2>
-    <form method="post">
-      <table>
-        <tbody><tr>
-          <td class="label">
-            Username
-          </td>
-          <td>
-            <input type="text" name="username" value="{{username}}">
-          </td>
-          <td class="error">
-            {{error_username}}
-          </td>
-        </tr>
+    <div id="wrap">
+      <header role="banner">
+        <h1 id="logo"><a href="/">Gary Grumbley</a></h1>
+      </header>
+        <nav class="menu">
+          <ul>
+            <li><a href="/rot13">Ceaser Cipher</a></li>
+            <li><a href="/signup">Signup Page</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+      <div id="main" role="main">
+        <div id="article">    
+          <h2>Signup</h2>
+          <form method="post">
+            <table>
+              <tbody><tr>
+                <td class="label">
+                  Username
+                </td>
+                <td>
+                  <input type="text" name="username" value="{{username}}">
+                </td>
+                <td class="error">
+                  {{error_username}}
+                </td>
+              </tr>
 
-        <tr>
-          <td class="label">
-            Password
-          </td>
-          <td>
-            <input type="password" name="password" value="">
-          </td>
-          <td class="error">
-            {{error_password}}
-          </td>
-        </tr>
+              <tr>
+                <td class="label">
+                  Password
+                </td>
+                <td>
+                  <input type="password" name="password" value="">
+                </td>
+                <td class="error">
+                  {{error_password}}
+                </td>
+              </tr>
 
-        <tr>
-          <td class="label">
-            Verify Password
-          </td>
-          <td>
-            <input type="password" name="verify" value="">
-          </td>
-          <td class="error">
-            {{error_verify}}
-          </td>
-        </tr>
+              <tr>
+                <td class="label">
+                  Verify Password
+                </td>
+                <td>
+                  <input type="password" name="verify" value="">
+                </td>
+                <td class="error">
+                  {{error_verify}}
+                </td>
+              </tr>
 
-        <tr>
-          <td class="label">
-            Email (optional)
-          </td>
-          <td>
-            <input type="text" name="email" value="{{email}}">
-          </td>
-          <td class="error">
-            {{error_email}}
-          </td>
-        </tr>
-      </tbody></table>
+              <tr>
+                <td class="label">
+                  Email (optional)
+                </td>
+                <td>
+                  <input type="text" name="email" value="{{email}}">
+                </td>
+                <td class="error">
+                  {{error_email}}
+                </td>
+              </tr>
+            </tbody></table>
 
-      <input type="submit">
-    </form>
-
-</body></html>
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+      <footer role="contentinfo">
+        <p>Copyright &copy; Gary Grumbley 2012</p>
+      </footer>
+    </div>
+  </body>
+</html>

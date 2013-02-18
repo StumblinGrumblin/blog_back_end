@@ -103,3 +103,9 @@ header[role="banner"] {
     width: 100%;
     height: 100%;
 }
+.label {text-align: right}
+.error {color: red}
+#c_list ul li{
+  text-decoration: none;
+  display:inline;
+}

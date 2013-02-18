@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <title>Unit 2 Signup</title>
-  </head>
-
-  <body>
-    <h2>Welcome, {{username}}!</h2>
+	<head>
+	  <meta charset="UTF-8" />
+	  <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
+	  <title>Welcome!</title>
+	  <link href="/static/master.css" rel="stylesheet" type="text/css" media="all" />
+	</head>
+	<body>
+		<div id="wrap">
+	    <header role="banner">
+	      <h1 id="logo"><a href="/">Gary Grumbley</a></h1>
+	    </header>
+	      <nav class="menu">
+	        <ul>
+	          <li><a href="/rot13">Ceaser Cipher</a></li>
+	          <li><a href="/signup">Signup Page</a></li>
+	          <li><a href="/about">About</a></li>
+	        </ul>
+	      </nav>
+			<div id="main" role="main">
+				<div id="article">
+					<h1>Welcome, {{username}}!</h1>
+				</div>
+			</div>
+			<footer role="contentinfo">
+	      <p>Copyright &copy; Gary Grumbley 2012</p>
+	    </footer>
+  	</div>
   </body>
 </html>

@@ -30,6 +30,10 @@ class MainPage(BaseHandler):
   def get(self):
     self.render('index.html')
 
+class AboutPage(BaseHandler):
+  def get(self):
+    self.render('about.html')
+
 class Rot13(BaseHandler):
   
   def get(self):
@@ -86,5 +90,4 @@ class Welcome(BaseHandler):
     else:
       self.redirect('/signup')
 
-app = webapp2.WSGIApplication([('/', MainPage),
-  ('/rot13', Rot13), ('/signup', Signup), ('/welcome', Welcome)], debug=True)
+app = webapp2.WSGIApplication([('/', MainPage), ('/about', AboutPage), ('/rot13', Rot13), ('/signup', Signup), ('/welcome', Welcome)], debug=True)
