@@ -40,12 +40,11 @@ class Rot13(BaseHandler):
     self.render('rot13.html')
 
   def post(self):
-    rot13 =''
+    rotty =''
     text = self.request.get('text')
     if text:
-      rot13 = text.encode('rot13')
-
-    self.render('rot13.html', text = rot13)
+      rotty = rot13(text)
+    self.render('rot13.html', text = rotty)
 
 
 class Signup(BaseHandler):
