@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <title>Stumblin' BLOG</title>
-  </head>
-
-  <body>
-    <h1>BLOG</h1>
-
-    <form method="post">
-      <label>
-        <div>title</div>
-        <input type="text" name="title" value="{{title}}">
-      </label>
-      
-      <label>
-        <div>art</div>
-        <textarea name="art">{{art}}</textarea>
-      </label>
-      
-      <div class="error">{{error}}</div>
-      
-      <input type="submit">
-    </form>
-
-  </body>
-</html>
+<div class="post">
+  <div class="post-heading">
+    <div class="post-title"
+      {{p.subject}}
+    </div>
+  
+    <div class="post-date">
+    {{p.created.strftime("%b %d, %Y")}}
+    </div>
+  </div>
+    
+  <div class="post-content">
+    {{p.render_text | safe}}
+  </div>
+</div>
