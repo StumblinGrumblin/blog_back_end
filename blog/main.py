@@ -43,7 +43,7 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
-  ####Cookie Section####
+####Cookie Section####
     def set_secure_cookie(self, name, val):
       cookie_val = make_secure_val(val)
       self.response.headers.add_header(
@@ -70,10 +70,6 @@ def render_post(response, post):
   response.out.write('<b>' + post.subject + '</b><br>')
   response.out.write(post.content)
 
-
-class MainPage(Handler):
-  def get(self):
-    self.render('index.html')
 
 ####USER HANDLERS#####
 def make_salt(length = 5):
@@ -173,24 +169,7 @@ class NewPost(Handler):
       error = "subject and content, please!"
       self.render("newpost.html", subject=subject, content=content, error=error)
 
-class AboutPage(Handler):
-  def get(self):
-    self.render('about.html')
-
-####OTHER PROJECTS####
-class Rot13(Handler):
-  
-  def get(self):
-    self.render('rot13.html')
-
-  def post(self):
-    rotty =''
-    text = self.request.get('text')
-    if text:
-      rotty = rot13(text)
-    self.render('rot13.html', text = rotty)
-
-
+####Login/Signup/Logout Stuff####
 class Signup(Handler):
   def get(self):
     self.render('signup.html')
@@ -227,10 +206,6 @@ class Signup(Handler):
   def done(self, *a, **kw):
     raise NotImplementedError
 
-class Unit2Signup(Signup):
-  def done(self):
-    self.redirect('/unit2/welcome?username=' + self.username)
-
 
 class Register(Signup):
   def done(self):
@@ -238,13 +213,13 @@ class Register(Signup):
     u = User.by_name(self.username)
     if u:
       msg = 'That user already exists.'
-      self.render('signup.html', err_username = msg)
+      self.render('signup.html', error_username = msg)
     else:
       u = User.register(self.username, self.password, self.email)
       u.put()
 
       self.login(u)
-      self.redirect('/unit3/welcome')
+      self.redirect('/welcome')
 
 
 class Login(Handler):
@@ -258,7 +233,7 @@ class Login(Handler):
     u = User.login(username, password)
     if u:
       self.login(u)
-      self.redirect('/unit3/welcome')
+      self.redirect('/welcome')
     else:
       msg = 'Invalid login'
       self.render('login.html', error = msg)
@@ -270,33 +245,39 @@ class Logout(Handler):
     self.redirect('/signup')
 
 
-class Unit3Welcome(Handler):
+class Welcome(Handler):
   def get(self):
     if self.user:
       self.render('welcome.html', username = self.user.name)
     else:
       self.redirect('/signup')
 
-####Old Welcome Page Handler####
-class Welcome(Handler):
-  def get(self):
-    username = self.request.get('username')
-    if valid_username(username):
-      self.render('welcome.html', username = username)
-    else:
-      self.redirect('/unit2/signup')
 
-app = webapp2.WSGIApplication([('/', MainPage), 
-                                ('/about', AboutPage), 
-                                ('/rot13', Rot13),
-                                ('/unit2/signup', Unit2Signup),
-                                ('/unit2/welcome', Welcome), 
+####OTHER PROJECTS####
+class Rot13(Handler):  
+  def get(self):
+    self.render('rot13.html')
+
+  def post(self):
+    rotty =''
+    text = self.request.get('text')
+    if text:
+      rotty = rot13(text)
+    self.render('rot13.html', text = rotty)
+
+
+class AboutPage(Handler):
+  def get(self):
+    self.render('about.html')
+
+app = webapp2.WSGIApplication([('/', BlogFront), 
+                                ('/blog/([0-9]+)', PostPage),
+                                ('/blog/newpost', NewPost),
+                                ('/about', AboutPage),
                                 ('/signup', Register), 
-                                ('/unit3/welcome', Unit3Welcome),
+                                ('/welcome', Welcome),
                                 ('/login', Login),
                                 ('/logout', Logout),
-                                ('/blog/?', BlogFront),
-                                ('/blog/([0-9]+)', PostPage),
-                                ('/blog/newpost', NewPost)
+                                ('/projects/rot13', Rot13)
                                 ], 
                                 debug=True)

@@ -117,8 +117,8 @@ header[role="banner"] {
   margin-left: 5px;
 }
 
-/*BLOG CSS*/
-/*h2 {
+/*Blog CSS*/
+h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -190,4 +190,4 @@ input[type=submit] {
 
 .post-content {
     margin-top: 5px;
-}*/
+}
